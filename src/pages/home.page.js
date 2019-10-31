@@ -5,11 +5,14 @@ class HomePage extends Page {
 
   constructor() {
     super();
-    this.href = '/';
+    this.href = 'literaryquicksand';
   }
 
   trait() {
-    super.trait(this.href);
+    browser.waitUntil(() => {
+      return browser.getUrl().includes(this.href);
+    }, 15000, 'Homepage did not load');
+    
     this.pageHeader.waitForVisible();
   }
 

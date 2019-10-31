@@ -103,16 +103,9 @@ exports.config = {
     mkdirp.sync(browser.options.screenshotsPath);
 
     browser.addCommand('getFile', commands.getFile.bind(browser));
-    browser.addCommand('getScreenshot', commands.getScreenshot.bind(browser));
   },
 
   beforeScenario: function () {
     browser.url('/');
-  },
-
-  afterStep: function (result) {
-    if (result.status === 'failed') {
-      browser.getScreenshot(result.step);
-    }
   }
 };
